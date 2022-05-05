@@ -2,3 +2,4 @@ node_modules/
 *.lock
 .env
 credentials.json
+package-lock.json

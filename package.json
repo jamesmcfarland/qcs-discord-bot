@@ -10,7 +10,7 @@
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.0",
     "google-auth-library": "^8.0.2",
-    "googleapis": "39"
+    "googleapis": "^100.0.0"
   },
   "type": "module"
 }

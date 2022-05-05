@@ -1,6 +1,7 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { verify } from "../sheets/verify.js";
 import { log } from "../utils/console.js";
+import "dotenv/config";
 
 export const command = {
   data: new SlashCommandBuilder()
@@ -17,10 +18,8 @@ export const command = {
 
     const email = interaction.options.getString("email");
     const discordUserId = interaction.user.id;
-    const role = interaction.guild.roles.find(
-      (role) => role.name === "QCS Verified ✅"
-    );
-    const user = interaction.user;
+    const role = await interaction.guild.roles.fetch(process.env.ROLE_ID);
+    const user = interaction.member;
 
     await interaction.deferReply({ ephemeral: true });
 
@@ -32,9 +31,17 @@ export const command = {
 
     const verified = await verify(email, discordUserId);
 
-    if (verified) {
-      user.roles.add(role);
-      // member.roles.add(role);
+    try {
+      if (verified) {
+        user.roles.add(role);
+        // member.roles.add(role);
+      }
+    } catch (e) {
+      await interaction.followUp({
+        content:
+          "I couldn't give you the role, you're above my pay grade! Let the admins know",
+        ephemeral: true,
+      });
     }
 
     await interaction.followUp({
