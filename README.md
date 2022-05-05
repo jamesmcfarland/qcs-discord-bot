@@ -2,11 +2,11 @@
 
 This is the discord bot for the Queen’s Computing Society. We use this to verify membership against a Google Sheets spreadsheet
 
-# Before starting
+## Before starting
 
 I’d recommend at least a basic understanding of JavaScript and Node.JS, and that you have already completed the DiscordJS getting started guide. [https://discordjs.guide](https://discordjs,guide)
 
-# Installation and Configuration
+## Installation and Configuration
 
 You’ll need Node.JS installed, version 16.5.0 or higher. I’d recommend using something like `nvm-windows` or `nvm` to manage your installations
 
@@ -136,7 +136,7 @@ pm2 save
 
 That’s it! The bot should now be working! 
 
-# Disclaimer
+## Disclaimer
 
 This code will only be updated as needed for feature, security and performance reasons, and should not be considered to be actively maintained.
 
