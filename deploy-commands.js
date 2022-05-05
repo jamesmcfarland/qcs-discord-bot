@@ -22,7 +22,7 @@ log(process.env.CLIENT_ID);
 log(commands);
 rest
   .put(
-    Routes.applicationGuildCommands(
+    Routes.applicationCommands(
       process.env.CLIENT_ID,
       process.env.GUILD_ID
     ),
