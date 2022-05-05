@@ -47,7 +47,7 @@ export const verify = (emailToVerify, discordUserId) => {
           log(`[Verify] ${!!searchResult ? "Found" : "Not Found"}`);
           if (!searchResult) resolve(false);
 
-          if (searchResult.discord !== discordUserId) {
+          if (searchResult.discord === undefined) {
             //Discord tag needs updated
             log("[Verify] Updating sheet...");
             sheets.spreadsheets.values
@@ -61,8 +61,8 @@ export const verify = (emailToVerify, discordUserId) => {
               })
               .then(() => resolve(true));
           } else {
-            log("[Verify] Update not required");
-            resolve(true);
+            log("[Verify] Entry already exists. Failing...");
+            resolve(false);
           }
         } else {
           log("[Verify] No data found.");
