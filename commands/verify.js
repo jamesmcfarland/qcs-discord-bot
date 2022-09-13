@@ -31,6 +31,16 @@ export const command = {
 
     const verified = await verify(email, discordUserId);
 
+    let reply = "";
+    if(verified === "EXISTS")
+      reply = "You're already verified!";
+    else if (verified) {
+      reply = "You're now verified, thanks!"
+    }
+    else {
+      reply = "I couldn't verify you! Check the email you used or contact the QCS Committee!"
+    }
+
     try {
       if (verified) {
         user.roles.add(role);
@@ -45,7 +55,7 @@ export const command = {
     }
 
     await interaction.followUp({
-      content: verified ? "Verified ✅" : "Failed to verify ❌",
+      content: reply,
       ephemeral: true,
     });
     log("[Command Engine] Follow Up Reply Sent");
