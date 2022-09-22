@@ -42,7 +42,7 @@ export const verify = (emailToVerify, discordUserId) => {
             `[Verify] Searching ${members.length} members for ${emailToVerify}...`
           );
           const searchResult = members.find(
-            (member) => member.email === emailToVerify
+            (member) => member.email.toLowerCase() === emailToVerify.toLowerCase()
           );
           log(`[Verify] ${!!searchResult ? "Found" : "Not Found"}`);
           if (!searchResult) resolve(false);
