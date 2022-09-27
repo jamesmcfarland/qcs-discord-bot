@@ -35,6 +35,7 @@ export const verify = (emailToVerify, discordUserId) => {
             // log(`${row[0]}, ${row[1]}`);
             members.push({ email: row[0], discord: row[1], index: i + 1 });
           });
+          members = members.filter(member=>!!member.email)
 
           // members.forEach(member=>log(member));
 
